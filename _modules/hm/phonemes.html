@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hm.phonemes &mdash; hm 0.0.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=8c5712d9"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            hm
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../module_docs/hm.html">hm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module_docs/hm/phonemes.html">hm.phonemes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">hm</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">hm.phonemes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for hm.phonemes</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Mnemonic tools using phonemes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">rooturl</span> <span class="o">=</span> <span class="s1">&#39;http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/&#39;</span>
+<span class="n">url_term_and_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b&#39;</span>
+<span class="n">url_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b.phones&#39;</span>
+<span class="n">url_symbols</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b.symbols&#39;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">term_and_phones</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">_text_to_term_and_phones</span><span class="p">(</span><span class="n">_get_cmu_raw_data_text</span><span class="p">())</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_cmu_raw_data_text</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url_term_and_phones</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pyckup</span><span class="w"> </span><span class="kn">import</span> <span class="n">grab</span>
+
+    <span class="k">return</span> <span class="n">grab</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_text_to_term_and_phones</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">phones</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span>
+        <span class="n">methodcaller</span><span class="p">(</span><span class="s1">&#39;split&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;;;;&#39;</span><span class="p">),</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()),</span>
+    <span class="p">):</span>
+        <span class="k">yield</span> <span class="n">term</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">phones</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">methodcaller</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">product</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Phone</span><span class="p">:</span>
+    <span class="n">rooturl</span> <span class="o">=</span> <span class="s1">&#39;http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/&#39;</span>
+    <span class="n">url_term_and_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b&#39;</span>
+    <span class="n">url_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b.phones&#39;</span>
+    <span class="n">url_symbols</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b.symbols&#39;</span>
+    <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;latin1&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url_term_and_phones</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url_term_and_phones</span> <span class="o">=</span> <span class="n">url_term_and_phones</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_term_and_phones</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">_text_to_term_and_phones</span><span class="p">(</span>
+                <span class="n">_get_cmu_raw_data_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_term_and_phones</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">term_to_phones</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentence</span><span class="p">):</span>
+        <span class="n">terms</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+        <span class="n">phones</span> <span class="o">=</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tp</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">terms</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">phones</span><span class="p">)</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">phone_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">_get_cmu_raw_data_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_phones</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">methodcaller</span><span class="p">(</span><span class="s1">&#39;split&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">lines</span><span class="p">))</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">phone_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tp</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span><span class="o">.</span><span class="n">most_common</span><span class="p">())</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">phones</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Note: url_phones contains</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phone_counts</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="keys_for_value">
+<a class="viewcode-back" href="../../module_docs/hm/phonemes.html#hm.phonemes.keys_for_value">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">keys_for_value</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An inverse of dict ``d``.</span>
+<span class="sd">    If ``d`` is a mapping of ``(key, value)``, ``keys_for_value`` will return</span>
+<span class="sd">    a dict of ``(unique_value, group_of_key)`` items.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">inverse_d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">inverse_d</span><span class="p">[</span><span class="n">value</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inverse_d</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="MajorSystem">
+<a class="viewcode-back" href="../../module_docs/hm/phonemes.html#hm.phonemes.MajorSystem">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MajorSystem</span><span class="p">(</span><span class="n">Phone</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    See:    https://en.wikipedia.org/wiki/Mnemonic_major_system</span>
+
+<span class="sd">    &gt;&gt;&gt; m = MajorSystem()</span>
+
+<span class="sd">    The &quot;Mnemonic Major System&quot; (https://en.wikipedia.org/wiki/Mnemonic_major_system)</span>
+<span class="sd">    assigns a set of similar phonemes to each digit:</span>
+
+<span class="sd">    &gt;&gt;&gt; assert m.phones_for_num == {</span>
+<span class="sd">    ...     0: {&#39;S&#39;, &#39;Z&#39;},</span>
+<span class="sd">    ...     1: {&#39;D&#39;, &#39;DH&#39;, &#39;T&#39;, &#39;TH&#39;},</span>
+<span class="sd">    ...     2: {&#39;N&#39;},</span>
+<span class="sd">    ...     3: {&#39;M&#39;},</span>
+<span class="sd">    ...     4: {&#39;R&#39;},</span>
+<span class="sd">    ...     5: {&#39;L&#39;},</span>
+<span class="sd">    ...     6: {&#39;CH&#39;, &#39;JH&#39;, &#39;SH&#39;},</span>
+<span class="sd">    ...     7: {&#39;G&#39;, &#39;K&#39;},</span>
+<span class="sd">    ...     8: {&#39;F&#39;, &#39;V&#39;},</span>
+<span class="sd">    ...     9: {&#39;B&#39;, &#39;P&#39;}</span>
+<span class="sd">    ... }</span>
+
+<span class="sd">    As a consequence these phonemes are mapped to numbers:</span>
+
+<span class="sd">    &gt;&gt;&gt; assert m.num_of_phone == {</span>
+<span class="sd">    ...     &#39;B&#39;: 9,</span>
+<span class="sd">    ...     &#39;CH&#39;: 6,</span>
+<span class="sd">    ...     &#39;D&#39;: 1,</span>
+<span class="sd">    ...     &#39;DH&#39;: 1,</span>
+<span class="sd">    ...     &#39;F&#39;: 8,</span>
+<span class="sd">    ...     &#39;G&#39;: 7,</span>
+<span class="sd">    ...     &#39;JH&#39;: 6,</span>
+<span class="sd">    ...     &#39;K&#39;: 7,</span>
+<span class="sd">    ...     &#39;L&#39;: 5,</span>
+<span class="sd">    ...     &#39;M&#39;: 3,</span>
+<span class="sd">    ...     &#39;N&#39;: 2,</span>
+<span class="sd">    ...     &#39;P&#39;: 9,</span>
+<span class="sd">    ...     &#39;R&#39;: 4,</span>
+<span class="sd">    ...     &#39;S&#39;: 0,</span>
+<span class="sd">    ...     &#39;SH&#39;: 6,</span>
+<span class="sd">    ...     &#39;T&#39;: 1,</span>
+<span class="sd">    ...     &#39;TH&#39;: 1,</span>
+<span class="sd">    ...     &#39;V&#39;: 8,</span>
+<span class="sd">    ...     &#39;Z&#39;: 0</span>
+<span class="sd">    ... }</span>
+
+<span class="sd">    Any sentence has a corresponding phoneme sequence:</span>
+
+<span class="sd">    &gt;&gt;&gt; m.term_to_phones(&#39;wild cat&#39;)</span>
+<span class="sd">    [&#39;W&#39;, &#39;AY1&#39;, &#39;L&#39;, &#39;D&#39;, &#39;K&#39;, &#39;AE1&#39;, &#39;T&#39;]</span>
+
+<span class="sd">    The system doesn&#39;t contain all phonemes; only some of the consonant phonemes.</span>
+<span class="sd">    So if we only keep those phonemes that the system covers, we get:</span>
+
+<span class="sd">    &gt;&gt;&gt; m.term_to_mst_sequence(&#39;wild cat&#39;)</span>
+<span class="sd">    [&#39;L&#39;, &#39;D&#39;, &#39;K&#39;, &#39;T&#39;]</span>
+
+<span class="sd">    Which corresponds to a number.</span>
+
+<span class="sd">    &gt;&gt;&gt; m.term_to_nums(&#39;wild cat&#39;)</span>
+<span class="sd">    [5, 1, 7, 1]</span>
+
+<span class="sd">    But really, the system is used to be able to create words (therefore images)</span>
+<span class="sd">    that correspond to a sequence of numbers, so that one can remember them:</span>
+
+<span class="sd">    &gt;&gt;&gt; m.terms_of_numstr[&#39;3214&#39;]  # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">    [&#39;hammontree&#39;, &#39;mahindra&#39;, &#39;manteer&#39;, &#39;mantra&#39;, &#39;mentor&#39;, &#39;minteer&#39;, &#39;mondry&#39;,</span>
+<span class="sd">    &#39;monetary&#39;, &#39;monteiro&#39;, &#39;monterey&#39;, &#39;montero&#39;, &#39;monterrey&#39;, &#39;montrouis&#39;,</span>
+<span class="sd">    &#39;montroy&#39;, &#39;montuori&#39;, &#39;omohundro&#39;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">phones_for_num</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">},</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;TH&#39;</span><span class="p">,</span> <span class="s1">&#39;DH&#39;</span><span class="p">},</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">},</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;M&#39;</span><span class="p">},</span>
+        <span class="mi">4</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;R&#39;</span><span class="p">},</span>
+        <span class="mi">5</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;L&#39;</span><span class="p">},</span>
+        <span class="mi">6</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;CH&#39;</span><span class="p">,</span> <span class="s1">&#39;SH&#39;</span><span class="p">,</span> <span class="s1">&#39;JH&#39;</span><span class="p">},</span>
+        <span class="mi">7</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">},</span>
+        <span class="mi">8</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">},</span>
+        <span class="mi">9</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">num_of_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">gen</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">phones_for_num</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">phone</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">phone</span><span class="p">,</span> <span class="n">num</span>
+
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">gen</span><span class="p">()))</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mst_phones</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_phone</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">term_to_mst_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentence</span><span class="p">):</span>
+        <span class="n">terms</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+        <span class="n">phones</span> <span class="o">=</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tp</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">terms</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mst_phones</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">,</span> <span class="n">phones</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">term_to_nums</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentence</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_phone</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">term_to_mst_sequence</span><span class="p">(</span><span class="n">sentence</span><span class="p">)))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nums_of_term</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">term</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">term_to_nums</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tp</span><span class="p">}</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">numstr_of_term</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">term</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">nums</span><span class="p">))</span> <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">nums</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nums_of_term</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terms_of_numstr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">keys_for_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numstr_of_term</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">num_to_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_middle_out_sort</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">terms_of_numstr</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">terms_of_numstr</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">_middle_out_sort</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">))):</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">first_half</span><span class="p">,</span> <span class="n">second_half</span> <span class="o">=</span> <span class="n">num</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
+                <span class="k">yield from</span> <span class="n">product</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">num_to_terms</span><span class="p">(</span><span class="n">first_half</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_to_terms</span><span class="p">(</span><span class="n">second_half</span><span class="p">)</span>
+                <span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
