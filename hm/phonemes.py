@@ -2,17 +2,17 @@
 Mnemonic tools using phonemes
 """
 
-rooturl = 'http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/'
-url_term_and_phones = rooturl + 'cmudict-0.7b'
-url_phones = rooturl + 'cmudict-0.7b.phones'
-url_symbols = rooturl + 'cmudict-0.7b.symbols'
+rooturl = "http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/"
+url_term_and_phones = rooturl + "cmudict-0.7b"
+url_phones = rooturl + "cmudict-0.7b.phones"
+url_symbols = rooturl + "cmudict-0.7b.symbols"
 
 
 def term_and_phones():
     return _text_to_term_and_phones(_get_cmu_raw_data_text())
 
 
-def _get_cmu_raw_data_text(url=url_term_and_phones, encoding='latin1'):
+def _get_cmu_raw_data_text(url=url_term_and_phones, encoding="latin1"):
     from pyckup import grab
 
     return grab(url).decode(encoding)
@@ -20,10 +20,10 @@ def _get_cmu_raw_data_text(url=url_term_and_phones, encoding='latin1'):
 
 def _text_to_term_and_phones(text):
     for term, phones in map(
-        methodcaller('split', sep=' ' * 2),
-        filter(lambda x: not x.startswith(';;;'), text.splitlines()),
+        methodcaller("split", sep=" " * 2),
+        filter(lambda x: not x.startswith(";;;"), text.splitlines()),
     ):
-        yield term.lower(), phones.split(' ')
+        yield term.lower(), phones.split(" ")
 
 
 from functools import cached_property
@@ -33,11 +33,11 @@ from collections import Counter, defaultdict
 
 
 class Phone:
-    rooturl = 'http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/'
-    url_term_and_phones = rooturl + 'cmudict-0.7b'
-    url_phones = rooturl + 'cmudict-0.7b.phones'
-    url_symbols = rooturl + 'cmudict-0.7b.symbols'
-    encoding = 'latin1'
+    rooturl = "http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/"
+    url_term_and_phones = rooturl + "cmudict-0.7b"
+    url_phones = rooturl + "cmudict-0.7b.phones"
+    url_symbols = rooturl + "cmudict-0.7b.symbols"
+    encoding = "latin1"
 
     def __init__(self, url_term_and_phones=None):
         self.url_term_and_phones = url_term_and_phones or self.url_term_and_phones
@@ -58,7 +58,7 @@ class Phone:
     @cached_property
     def phone_class(self):
         lines = _get_cmu_raw_data_text(self.url_phones).splitlines()
-        return dict(map(methodcaller('split', sep='\t'), lines))
+        return dict(map(methodcaller("split", sep="\t"), lines))
 
     @cached_property
     def phone_counts(self):
@@ -155,16 +155,16 @@ class MajorSystem(Phone):
     """
 
     phones_for_num = {
-        0: {'Z', 'S'},
-        1: {'T', 'D', 'TH', 'DH'},
-        2: {'N'},
-        3: {'M'},
-        4: {'R'},
-        5: {'L'},
-        6: {'CH', 'SH', 'JH'},
-        7: {'K', 'G'},
-        8: {'F', 'V'},
-        9: {'P', 'B'},
+        0: {"Z", "S"},
+        1: {"T", "D", "TH", "DH"},
+        2: {"N"},
+        3: {"M"},
+        4: {"R"},
+        5: {"L"},
+        6: {"CH", "SH", "JH"},
+        7: {"K", "G"},
+        8: {"F", "V"},
+        9: {"P", "B"},
     }
 
     @cached_property
@@ -195,7 +195,7 @@ class MajorSystem(Phone):
     @cached_property
     def numstr_of_term(self):
         return {
-            term: ''.join(map(str, nums)) for term, nums in self.nums_of_term.items()
+            term: "".join(map(str, nums)) for term, nums in self.nums_of_term.items()
         }
 
     @cached_property
