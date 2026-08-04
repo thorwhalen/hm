@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hm.phonemes &mdash; hm 0.0.4 documentation</title>
+  <title>hm.phonemes &mdash; hm 0.0.5 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=8c5712d9"></script>
+      <script src="../../_static/documentation_options.js?v=282f96c0"></script>
       <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/toggleprompt.js?v=d7ede5d2"></script>
@@ -79,17 +79,17 @@
 <span class="sd">Mnemonic tools using phonemes</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">rooturl</span> <span class="o">=</span> <span class="s1">&#39;http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/&#39;</span>
-<span class="n">url_term_and_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b&#39;</span>
-<span class="n">url_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b.phones&#39;</span>
-<span class="n">url_symbols</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b.symbols&#39;</span>
+<span class="n">rooturl</span> <span class="o">=</span> <span class="s2">&quot;http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/&quot;</span>
+<span class="n">url_term_and_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s2">&quot;cmudict-0.7b&quot;</span>
+<span class="n">url_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s2">&quot;cmudict-0.7b.phones&quot;</span>
+<span class="n">url_symbols</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s2">&quot;cmudict-0.7b.symbols&quot;</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">term_and_phones</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">_text_to_term_and_phones</span><span class="p">(</span><span class="n">_get_cmu_raw_data_text</span><span class="p">())</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_cmu_raw_data_text</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url_term_and_phones</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_cmu_raw_data_text</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url_term_and_phones</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin1&quot;</span><span class="p">):</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">pyckup</span><span class="w"> </span><span class="kn">import</span> <span class="n">grab</span>
 
     <span class="k">return</span> <span class="n">grab</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
@@ -97,10 +97,10 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_text_to_term_and_phones</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">phones</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span>
-        <span class="n">methodcaller</span><span class="p">(</span><span class="s1">&#39;split&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;;;;&#39;</span><span class="p">),</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()),</span>
+        <span class="n">methodcaller</span><span class="p">(</span><span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;;;;&quot;</span><span class="p">),</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()),</span>
     <span class="p">):</span>
-        <span class="k">yield</span> <span class="n">term</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">phones</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">term</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">phones</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span>
@@ -110,11 +110,11 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Phone</span><span class="p">:</span>
-    <span class="n">rooturl</span> <span class="o">=</span> <span class="s1">&#39;http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/&#39;</span>
-    <span class="n">url_term_and_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b&#39;</span>
-    <span class="n">url_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b.phones&#39;</span>
-    <span class="n">url_symbols</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s1">&#39;cmudict-0.7b.symbols&#39;</span>
-    <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;latin1&#39;</span>
+    <span class="n">rooturl</span> <span class="o">=</span> <span class="s2">&quot;http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/&quot;</span>
+    <span class="n">url_term_and_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s2">&quot;cmudict-0.7b&quot;</span>
+    <span class="n">url_phones</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s2">&quot;cmudict-0.7b.phones&quot;</span>
+    <span class="n">url_symbols</span> <span class="o">=</span> <span class="n">rooturl</span> <span class="o">+</span> <span class="s2">&quot;cmudict-0.7b.symbols&quot;</span>
+    <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;latin1&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url_term_and_phones</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">url_term_and_phones</span> <span class="o">=</span> <span class="n">url_term_and_phones</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_term_and_phones</span>
@@ -135,7 +135,7 @@
     <span class="nd">@cached_property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">phone_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="n">_get_cmu_raw_data_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_phones</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">methodcaller</span><span class="p">(</span><span class="s1">&#39;split&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">lines</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">methodcaller</span><span class="p">(</span><span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">),</span> <span class="n">lines</span><span class="p">))</span>
 
     <span class="nd">@cached_property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">phone_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -237,16 +237,16 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">phones_for_num</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">},</span>
-        <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;TH&#39;</span><span class="p">,</span> <span class="s1">&#39;DH&#39;</span><span class="p">},</span>
-        <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">},</span>
-        <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;M&#39;</span><span class="p">},</span>
-        <span class="mi">4</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;R&#39;</span><span class="p">},</span>
-        <span class="mi">5</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;L&#39;</span><span class="p">},</span>
-        <span class="mi">6</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;CH&#39;</span><span class="p">,</span> <span class="s1">&#39;SH&#39;</span><span class="p">,</span> <span class="s1">&#39;JH&#39;</span><span class="p">},</span>
-        <span class="mi">7</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">},</span>
-        <span class="mi">8</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">},</span>
-        <span class="mi">9</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">},</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">},</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;TH&quot;</span><span class="p">,</span> <span class="s2">&quot;DH&quot;</span><span class="p">},</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;N&quot;</span><span class="p">},</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;M&quot;</span><span class="p">},</span>
+        <span class="mi">4</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;R&quot;</span><span class="p">},</span>
+        <span class="mi">5</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;L&quot;</span><span class="p">},</span>
+        <span class="mi">6</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;CH&quot;</span><span class="p">,</span> <span class="s2">&quot;SH&quot;</span><span class="p">,</span> <span class="s2">&quot;JH&quot;</span><span class="p">},</span>
+        <span class="mi">7</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">},</span>
+        <span class="mi">8</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">},</span>
+        <span class="mi">9</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">},</span>
     <span class="p">}</span>
 
     <span class="nd">@cached_property</span>
@@ -277,7 +277,7 @@
     <span class="nd">@cached_property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">numstr_of_term</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="n">term</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">nums</span><span class="p">))</span> <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">nums</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nums_of_term</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="n">term</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">nums</span><span class="p">))</span> <span class="k">for</span> <span class="n">term</span><span class="p">,</span> <span class="n">nums</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nums_of_term</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="p">}</span>
 
     <span class="nd">@cached_property</span>
@@ -308,7 +308,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright NO COPYRIGHT.</p>
+    <p></p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
