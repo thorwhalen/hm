@@ -10,7 +10,30 @@ version = "0.0.5"
 description = "Mnemonic tools"
 readme = "README.md"
 requires-python = ">=3.10"
-keywords = []
+license = "Apache-2.0"
+keywords = [
+    "mnemonics",
+    "mnemonic-major-system",
+    "memorization",
+    "phonemes",
+    "cmudict",
+    "pronunciation",
+    "numbers",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Education",
+]
 authors = [
     { name = "Thor Whalen" },
 ]
@@ -18,11 +41,11 @@ dependencies = [
     "pyckup",
 ]
 
-[project.license]
-text = "Apache-2.0"
-
 [project.urls]
 Homepage = "https://github.com/thorwhalen/hm"
+Documentation = "https://thorwhalen.github.io/hm/"
+Repository = "https://github.com/thorwhalen/hm"
+Issues = "https://github.com/thorwhalen/hm/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -77,6 +100,7 @@ convention = "google"
 minversion = "6.0"
 testpaths = [
     "tests",
+    "hm",
 ]
 doctest_optionflags = [
     "NORMALIZE_WHITESPACE",
