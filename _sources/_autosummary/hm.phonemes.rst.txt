@@ -1,0 +1,19 @@
+hm.phonemes
+===========
+
+.. automodule:: hm.phonemes
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      keys_for_value
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MajorSystem
+      Phone
+   

@@ -1,0 +1,13 @@
+# hm
+
+> Mnemonic tools
+
+
+## Pages in this subsection
+
+- [hm](hm.html.md): Tools to remember stuff
+- [hm.phonemes](hm.phonemes.html.md): Mnemonic tools using phonemes
+
+## Optional
+
+- [Top-level llms.txt](../llms.txt): Complete documentation index.

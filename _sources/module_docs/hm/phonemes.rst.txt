@@ -1,4 +1,0 @@
-hm.phonemes
-===========
-.. automodule:: hm.phonemes
-   :members:

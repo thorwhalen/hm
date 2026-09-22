@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "built_at": "2026-09-22T14:42:51Z",
+  "package": {
+    "name": "hm",
+    "version": "0.0.6",
+    "display_name": "hm",
+    "source": "pyproject.toml"
+  },
+  "git": {
+    "available": true,
+    "commit": "2536724566130a021955f0a39c8e71dd8372789b",
+    "short_commit": "2536724",
+    "branch": "master",
+    "tags": [],
+    "dirty": false,
+    "remote_url": "https://github.com/thorwhalen/hm",
+    "commit_url": "https://github.com/thorwhalen/hm/commit/2536724566130a021955f0a39c8e71dd8372789b",
+    "error": null
+  },
+  "ci": {
+    "provider": "github",
+    "repository": "thorwhalen/hm",
+    "sha": "2536724566130a021955f0a39c8e71dd8372789b",
+    "sha_in_history": true,
+    "ref": "refs/heads/master",
+    "ref_name": "master",
+    "run_id": "35742041149",
+    "run_url": "https://github.com/thorwhalen/hm/actions/runs/35742041149",
+    "server_url": "https://github.com"
+  },
+  "tools": {
+    "epythet": "0.2.12",
+    "sphinx": "9.1.0",
+    "docutils": "0.22.4",
+    "python": "3.12.14"
+  },
+  "config": {
+    "theme": "auto",
+    "html_theme": "furo",
+    "accent": "#5e5d00",
+    "mode": "auto",
+    "api_generator": "autosummary",
+    "ignore": [
+      "tests/",
+      "scrap/",
+      "examples/"
+    ],
+    "agent_outputs": true,
+    "aggregates": [
+      "md"
+    ],
+    "ai_artifacts": true,
+    "provenance": true,
+    "docs_dir": "docsrc"
+  },
+  "site": {
+    "modules_documented": 2,
+    "objects_documented": 2
+  },
+  "pypi": {
+    "checked": true,
+    "latest": "0.0.7",
+    "relation": "behind",
+    "error": null
+  },
+  "reproduce": "git clone https://github.com/thorwhalen/hm && cd hm\ngit checkout 2536724566130a021955f0a39c8e71dd8372789b\npip install \"epythet==0.2.12\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "warnings": [],
+  "alignment": {
+    "aligned": false,
+    "notes": [
+      "The documented version (0.0.6) is behind the latest release on PyPI (0.0.7): `pip install hm` gives newer code than these docs describe."
+    ]
+  }
+}

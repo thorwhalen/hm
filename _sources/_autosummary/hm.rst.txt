@@ -1,0 +1,13 @@
+﻿hm
+==
+
+.. automodule:: hm
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   phonemes
