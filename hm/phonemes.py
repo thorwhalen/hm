@@ -2,14 +2,15 @@
 Mnemonic tools using phonemes
 """
 
+from functools import cached_property
+from operator import methodcaller
+from itertools import chain, product
+from collections import Counter, defaultdict
+
 rooturl = "http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/"
 url_term_and_phones = rooturl + "cmudict-0.7b"
 url_phones = rooturl + "cmudict-0.7b.phones"
 url_symbols = rooturl + "cmudict-0.7b.symbols"
-
-
-def term_and_phones():
-    return _text_to_term_and_phones(_get_cmu_raw_data_text())
 
 
 def _get_cmu_raw_data_text(url=url_term_and_phones, encoding="latin1"):
@@ -26,21 +27,13 @@ def _text_to_term_and_phones(text):
         yield term.lower(), phones.split(" ")
 
 
-from functools import cached_property
-from operator import methodcaller
-from itertools import chain, product
-from collections import Counter, defaultdict
-
-
 class Phone:
-    rooturl = "http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/"
-    url_term_and_phones = rooturl + "cmudict-0.7b"
-    url_phones = rooturl + "cmudict-0.7b.phones"
-    url_symbols = rooturl + "cmudict-0.7b.symbols"
+    # Single source of truth for these URLs is the module level above;
+    # not redeclared here (see thorwhalen/hm#2).
     encoding = "latin1"
 
-    def __init__(self, url_term_and_phones=None):
-        self.url_term_and_phones = url_term_and_phones or self.url_term_and_phones
+    def __init__(self, *, url_term_and_phones: str = url_term_and_phones):
+        self.url_term_and_phones = url_term_and_phones
 
     @cached_property
     def tp(self):
@@ -57,7 +50,7 @@ class Phone:
 
     @cached_property
     def phone_class(self):
-        lines = _get_cmu_raw_data_text(self.url_phones).splitlines()
+        lines = _get_cmu_raw_data_text(url_phones).splitlines()
         return dict(map(methodcaller("split", sep="\t"), lines))
 
     @cached_property
