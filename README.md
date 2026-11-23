@@ -1,22 +1,23 @@
 
 # hm
-Mnemonic tools
+
+Mnemonic tools: for now, the mnemonic major system, which turns numbers into pronounceable words you can remember.
 
 
-To install:	```pip install hm```
+```bash
+pip install hm
+```
 
 # Mnemonic Major System
 
-The [major system](https://en.wikipedia.org/wiki/Mnemonic_major_system)
-is a mnemonic technique used to aid in memorizing numbers.
+The [major system](https://en.wikipedia.org/wiki/Mnemonic_major_system) is a mnemonic technique used to aid in memorizing numbers.
 
 It works as follows:
 
     >>> from hm import MajorSystem
     >>> m = MajorSystem()
 
-The "Mnemonic Major System" (https://en.wikipedia.org/wiki/Mnemonic_major_system)
-assigns a set of similar phonemes to each digit:
+The "Mnemonic Major System" (https://en.wikipedia.org/wiki/Mnemonic_major_system) assigns a set of similar phonemes to each digit:
 
     >>> assert m.phones_for_num == {
     ...     0: {'S', 'Z'},
@@ -60,8 +61,7 @@ Any sentence has a corresponding phoneme sequence:
     >>> m.term_to_phones('wild cat')
     ['W', 'AY1', 'L', 'D', 'K', 'AE1', 'T']
 
-The system doesn't contain all phonemes; only some of the consonant phonemes.
-So if we only keep those phonemes that the system covers, we get:
+The system doesn't contain all phonemes; only some of the consonant phonemes. So if we only keep those phonemes that the system covers, we get:
 
     >>> m.term_to_mst_sequence('wild cat')
     ['L', 'D', 'K', 'T']
@@ -71,8 +71,7 @@ Which corresponds to a number.
     >>> m.term_to_nums('wild cat')
     [5, 1, 7, 1]
 
-But really, the system is used to be able to create words (therefore images)
-that correspond to a sequence of numbers, so that one can remember them:
+But really, the system is used to be able to create words (therefore images) that correspond to a sequence of numbers, so that one can remember them:
 
     >>> m.terms_of_numstr['3214']  # doctest: +NORMALIZE_WHITESPACE
     ['hammontree', 'mahindra', 'manteer', 'mantra', 'mentor', 'minteer', 'mondry',
