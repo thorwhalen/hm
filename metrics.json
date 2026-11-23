@@ -1,7 +1,7 @@
 {
-  "collection_duration_seconds": 3.6560511589050293,
-  "commit_message": "docs(readme): description, install block, unwrapped",
-  "commit_sha": "6c177234b9f862d0eb5e94048452f591f6a64261",
+  "collection_duration_seconds": 3.303217649459839,
+  "commit_message": "Merge 6c177234b9f862d0eb5e94048452f591f6a64261 into 027b216dcea7dfeaeb080a55dcf58f15f60d9e39",
+  "commit_sha": "7187fc0780d0c127ca5ed8aab50572caf8d0a04b",
   "metrics": {
     "coverage": {
       "branch_coverage": 0.0,
@@ -42,6 +42,6 @@
   },
   "python_version": "3.10",
   "schema_version": "1.0",
-  "timestamp": "2026-11-23T07:48:48.785087Z",
+  "timestamp": "2026-11-23T07:48:51.671580Z",
   "workflow_status": {}
 }
