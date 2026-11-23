@@ -5,19 +5,17 @@ orphan: true
 
 # About this build
 
-This documentation was built on **2026-09-22 14:42 UTC** from commit <a href="https://github.com/thorwhalen/hm/commit/2536724566130a021955f0a39c8e71dd8372789b"><code>2536724</code></a> on branch <code>master</code>, for **hm 0.0.6** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-23 07:50 UTC** from commit <a href="https://github.com/thorwhalen/hm/commit/13a3b319a7f0ed8b6a81aefa98dca633e3622522"><code>13a3b31</code></a> on branch <code>master</code>, for **hm 0.0.7** (from <code>pyproject.toml</code>).
 
-:::{warning}
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.6) is behind the latest release on PyPI (0.0.7): `pip install hm` gives newer code than these docs describe.
+:::{note}
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 :::
 
 ## Source
 
 | | |
 |---|---|
-| Commit | <a href="https://github.com/thorwhalen/hm/commit/2536724566130a021955f0a39c8e71dd8372789b"><code>2536724566130a021955f0a39c8e71dd8372789b</code></a> |
+| Commit | <a href="https://github.com/thorwhalen/hm/commit/13a3b319a7f0ed8b6a81aefa98dca633e3622522"><code>13a3b319a7f0ed8b6a81aefa98dca633e3622522</code></a> |
 | Branch | <code>master</code> |
 | Tags at this commit | none |
 | Working tree | clean |
@@ -28,18 +26,18 @@ The documentation and the package may be misaligned:
 | | |
 |---|---|
 | Repository | <code>thorwhalen/hm</code> |
-| Run | <a href="https://github.com/thorwhalen/hm/actions/runs/35742041149">35742041149</a> |
+| Run | <a href="https://github.com/thorwhalen/hm/actions/runs/45133900060">45133900060</a> |
 | Ref | <code>refs/heads/master</code> |
-| Event commit | <code>2536724566130a021955f0a39c8e71dd8372789b</code> (in the history of the built commit) |
+| Event commit | <code>13a3b319a7f0ed8b6a81aefa98dca633e3622522</code> (in the history of the built commit) |
 
 ## Tools
 
 | | |
 |---|---|
-| epythet | 0.2.12 |
-| Sphinx | 9.1.0 |
+| epythet | 0.2.24 |
+| Sphinx | 9.1.1 |
 | docutils | 0.22.4 |
-| Python | 3.12.14 |
+| Python | 3.12.16 |
 
 ## Configuration as resolved
 
@@ -55,14 +53,14 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/hm/0.0.7/">0.0.7</a>, newer than the documented version (0.0.6).
+Latest release: <a href="https://pypi.org/project/hm/0.0.7/">0.0.7</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/thorwhalen/hm && cd hm
-git checkout 2536724566130a021955f0a39c8e71dd8372789b
-pip install "epythet==0.2.12"
+git checkout 13a3b319a7f0ed8b6a81aefa98dca633e3622522
+pip install "epythet==0.2.24"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
 

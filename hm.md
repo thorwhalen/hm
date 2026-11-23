@@ -1,4 +1,4 @@
-> built 2026-09-22 14:42 UTC from 2536724 (master) · hm 0.0.6. Details: build_info.json
+> built 2026-11-23 07:50 UTC from 13a3b31 (master) · hm 0.0.7. Details: build_info.json
 
 # index.html.md
 
@@ -6,14 +6,15 @@
 
 # hm
 
-Mnemonic tools
+Mnemonic tools: for now, the mnemonic major system, which turns numbers into pronounceable words you can remember.
 
-To install:	`pip install hm`
+```bash
+pip install hm
+```
 
 # Mnemonic Major System
 
-The [major system](https://en.wikipedia.org/wiki/Mnemonic_major_system)
-is a mnemonic technique used to aid in memorizing numbers.
+The [major system](https://en.wikipedia.org/wiki/Mnemonic_major_system) is a mnemonic technique used to aid in memorizing numbers.
 
 It works as follows:
 
@@ -22,8 +23,7 @@ It works as follows:
 >>> m = MajorSystem()
 ```
 
-The “Mnemonic Major System” (https://en.wikipedia.org/wiki/Mnemonic_major_system)
-assigns a set of similar phonemes to each digit:
+The “Mnemonic Major System” (https://en.wikipedia.org/wiki/Mnemonic_major_system) assigns a set of similar phonemes to each digit:
 
 ```none
 >>> assert m.phones_for_num == {
@@ -73,8 +73,7 @@ Any sentence has a corresponding phoneme sequence:
 ['W', 'AY1', 'L', 'D', 'K', 'AE1', 'T']
 ```
 
-The system doesn’t contain all phonemes; only some of the consonant phonemes.
-So if we only keep those phonemes that the system covers, we get:
+The system doesn’t contain all phonemes; only some of the consonant phonemes. So if we only keep those phonemes that the system covers, we get:
 
 ```none
 >>> m.term_to_mst_sequence('wild cat')
@@ -88,8 +87,7 @@ Which corresponds to a number.
 [5, 1, 7, 1]
 ```
 
-But really, the system is used to be able to create words (therefore images)
-that correspond to a sequence of numbers, so that one can remember them:
+But really, the system is used to be able to create words (therefore images) that correspond to a sequence of numbers, so that one can remember them:
 
 ```none
 >>> m.terms_of_numstr['3214']  # doctest: +NORMALIZE_WHITESPACE
@@ -229,18 +227,16 @@ a dict of `(unique_value, group_of_key)` items.
 
 # About this build
 
-This documentation was built on **2026-09-22 14:42 UTC** from commit <a href="https://github.com/thorwhalen/hm/commit/2536724566130a021955f0a39c8e71dd8372789b"><code>2536724</code></a> on branch <code>master</code>, for **hm 0.0.6** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-23 07:50 UTC** from commit <a href="https://github.com/thorwhalen/hm/commit/13a3b319a7f0ed8b6a81aefa98dca633e3622522"><code>13a3b31</code></a> on branch <code>master</code>, for **hm 0.0.7** (from <code>pyproject.toml</code>).
 
-#### WARNING
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.6) is behind the latest release on PyPI (0.0.7): `pip install hm` gives newer code than these docs describe.
+#### NOTE
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
 |                     |                                                                                                                                                      |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/thorwhalen/hm/commit/2536724566130a021955f0a39c8e71dd8372789b"><code>2536724566130a021955f0a39c8e71dd8372789b</code></a> |
+| Commit              | <a href="https://github.com/thorwhalen/hm/commit/13a3b319a7f0ed8b6a81aefa98dca633e3622522"><code>13a3b319a7f0ed8b6a81aefa98dca633e3622522</code></a> |
 | Branch              | <code>master</code>                                                                                                                                  |
 | Tags at this commit | none                                                                                                                                                 |
 | Working tree        | clean                                                                                                                                                |
@@ -251,18 +247,18 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>thorwhalen/hm</code>                                                                 |
-| Run          | <a href="https://github.com/thorwhalen/hm/actions/runs/35742041149">35742041149</a>        |
+| Run          | <a href="https://github.com/thorwhalen/hm/actions/runs/45133900060">45133900060</a>        |
 | Ref          | <code>refs/heads/master</code>                                                             |
-| Event commit | <code>2536724566130a021955f0a39c8e71dd8372789b</code> (in the history of the built commit) |
+| Event commit | <code>13a3b319a7f0ed8b6a81aefa98dca633e3622522</code> (in the history of the built commit) |
 
 ## Tools
 
 |          |         |
 |----------|---------|
-| epythet  | 0.2.12  |
-| Sphinx   | 9.1.0   |
+| epythet  | 0.2.24  |
+| Sphinx   | 9.1.1   |
 | docutils | 0.22.4  |
-| Python   | 3.12.14 |
+| Python   | 3.12.16 |
 
 ## Configuration as resolved
 
@@ -278,14 +274,14 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/hm/0.0.7/">0.0.7</a>, newer than the documented version (0.0.6).
+Latest release: <a href="https://pypi.org/project/hm/0.0.7/">0.0.7</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/thorwhalen/hm && cd hm
-git checkout 2536724566130a021955f0a39c8e71dd8372789b
-pip install "epythet==0.2.12"
+git checkout 13a3b319a7f0ed8b6a81aefa98dca633e3622522
+pip install "epythet==0.2.24"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
 

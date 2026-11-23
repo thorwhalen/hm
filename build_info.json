@@ -1,39 +1,39 @@
 {
   "schema_version": 1,
-  "built_at": "2026-09-22T14:42:51Z",
+  "built_at": "2026-11-23T07:50:44Z",
   "package": {
     "name": "hm",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "display_name": "hm",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "2536724566130a021955f0a39c8e71dd8372789b",
-    "short_commit": "2536724",
+    "commit": "13a3b319a7f0ed8b6a81aefa98dca633e3622522",
+    "short_commit": "13a3b31",
     "branch": "master",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/thorwhalen/hm",
-    "commit_url": "https://github.com/thorwhalen/hm/commit/2536724566130a021955f0a39c8e71dd8372789b",
+    "commit_url": "https://github.com/thorwhalen/hm/commit/13a3b319a7f0ed8b6a81aefa98dca633e3622522",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "thorwhalen/hm",
-    "sha": "2536724566130a021955f0a39c8e71dd8372789b",
+    "sha": "13a3b319a7f0ed8b6a81aefa98dca633e3622522",
     "sha_in_history": true,
     "ref": "refs/heads/master",
     "ref_name": "master",
-    "run_id": "35742041149",
-    "run_url": "https://github.com/thorwhalen/hm/actions/runs/35742041149",
+    "run_id": "45133900060",
+    "run_url": "https://github.com/thorwhalen/hm/actions/runs/45133900060",
     "server_url": "https://github.com"
   },
   "tools": {
-    "epythet": "0.2.12",
-    "sphinx": "9.1.0",
+    "epythet": "0.2.24",
+    "sphinx": "9.1.1",
     "docutils": "0.22.4",
-    "python": "3.12.14"
+    "python": "3.12.16"
   },
   "config": {
     "theme": "auto",
@@ -61,15 +61,13 @@
   "pypi": {
     "checked": true,
     "latest": "0.0.7",
-    "relation": "behind",
+    "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/thorwhalen/hm && cd hm\ngit checkout 2536724566130a021955f0a39c8e71dd8372789b\npip install \"epythet==0.2.12\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/thorwhalen/hm && cd hm\ngit checkout 13a3b319a7f0ed8b6a81aefa98dca633e3622522\npip install \"epythet==0.2.24\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": false,
-    "notes": [
-      "The documented version (0.0.6) is behind the latest release on PyPI (0.0.7): `pip install hm` gives newer code than these docs describe."
-    ]
+    "aligned": true,
+    "notes": []
   }
 }

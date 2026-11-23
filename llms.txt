@@ -5,11 +5,11 @@
 
 ## Pages
 
-- [hm](index.html.md): Mnemonic tools
+- [hm](index.html.md): Mnemonic tools: for now, the mnemonic major system, which turns numbers into pronounceable words you...
 - [API reference](api.html.md): | &#96;hm&#96;   | Tools to remember stuff   |
 - [hm](_autosummary/hm.html.md): Tools to remember stuff
 - [hm.phonemes](_autosummary/hm.phonemes.html.md): Mnemonic tools using phonemes
-- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-09-22 14:42 UTC&#42;&#42; from commit &lt;a href="https://github.com/tho...
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-23 07:50 UTC&#42;&#42; from commit &lt;a href="https://github.com/tho...
 
 ## Optional
 
